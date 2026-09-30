@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10191a">
+  <meta name="description" content="Uma experiência interativa para explorar o movimento do pêndulo simples.">
+  <title>Pêndulo simples | Laboratório de Física</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="Laboratório de Física, início"><span class="brand-mark">∿</span><span>LABORATÓRIO DE FÍSICA</span></a>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <nav class="site-nav" id="site-nav" aria-label="Navegação principal">
+      <a href="#inicio" aria-current="page"><span class="nav-index">01</span>Introdução</a>
+      <a href="experimento.html"><span class="nav-index">02</span>Nosso experimento</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow mono">Experimento · Mecânica clássica</div>
+        <h1 id="hero-title">Pêndulo<br><span>simples.</span></h1>
+        <p class="hero-lede">Info 2A · IFMS Campus Três Lagoas · 2026</p>
+        <a class="hero-link mono" href="experimento.html"><span>Ver nosso experimento</span><span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="hero-visual" aria-label="Animação de um pêndulo oscilando">
+        <span class="hero-coordinate mono">φ / t</span>
+        <canvas id="hero-canvas" aria-hidden="true"></canvas>
+        <span class="hero-caption mono">Oscilação em curso</span>
+      </div>
+      <div class="hero-index mono"><span>LAB 01</span><span>/</span><span>01 — 04</span></div>
+    </section>
+
+    <section class="intro section-light" id="introducao" aria-labelledby="intro-title">
+      <div class="section-kicker">
+        <div class="eyebrow mono">01 / Introdução</div>
+        <h2 class="intro-title" id="intro-title">Uma ideia que se move <em>de um lado para o outro.</em></h2>
+      </div>
+      <div class="intro-content">
+        <p>O pêndulo simples é uma massa presa a um fio leve e suspenso por um ponto fixo. Ao ser afastado e solto, oscila sob a ação da gravidade. Nosso grupo mediu o período para diferentes comprimentos e também investigou como a massa e a amplitude inicial se relacionam com esse movimento.</p>
+        <div class="methodology">
+          <div>
+            <h3>Objetivo</h3>
+            <p>Investigar a relação entre comprimento e período e estimar a aceleração da gravidade com os dados coletados.</p>
+            <span class="formula">T ≈ 2π √(L / g)</span>
+          </div>
+          <div>
+            <h3>Metodologia</h3>
+            <p>Cronometramos dez oscilações, repetimos cada condição cinco vezes e comparamos os resultados com o modelo teórico.</p>
+          </div>
+        </div>
+        <div class="note-line"><span class="mono">MODELO</span><span>Para pequenas amplitudes, o período depende do comprimento do fio e da gravidade, e não da massa suspensa.</span></div>
+      </div>
+    </section>
+
+    <section class="sim-section" id="simulacao" aria-labelledby="sim-title">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow mono">02 / Bancada virtual</div>
+          <h2 id="sim-title">Ajuste. Solte.<br>Observe.</h2>
+        </div>
+        <p>Altere as condições iniciais e acompanhe a oscilação. O cronômetro e o gráfico avançam junto com o movimento.</p>
+      </div>
+      <div class="sim-layout">
+        <div class="sim-main">
+          <div class="sim-toolbar">
+            <div class="live-indicator mono"><span class="live-dot"></span><span id="sim-status">Pronto para iniciar</span></div>
+            <div class="sim-readout mono"><span>TEMPO<strong id="elapsed-readout">0.00 s</strong></span><span>ÂNGULO<strong id="angle-readout">25.0°</strong></span></div>
+          </div>
+          <div class="sim-stage"><canvas id="sim-canvas" role="img" aria-label="Visualização animada do pêndulo"></canvas><span class="stage-label mono">g = 9,81 m/s²</span></div>
+          <div class="sim-actions">
+            <button class="action-button" id="start-button" type="button"><span class="icon" aria-hidden="true">▶</span><span>Iniciar simulação</span></button>
+            <button class="action-button secondary" id="reset-button" type="button"><span class="icon" aria-hidden="true">↺</span><span>Reiniciar</span></button>
+            <span class="sim-actions-note mono">Tempo simulado · escala real</span>
+          </div>
+        </div>
+        <aside class="sim-controls" aria-label="Parâmetros do pêndulo">
+          <div class="controls-head"><h3>Parâmetros</h3><span class="mono">EDITÁVEIS</span></div>
+          <div class="control">
+            <label class="control-label" for="angle-input"><span>Ângulo inicial</span><output class="control-value" id="angle-value" for="angle-input">25°</output></label>
+            <input id="angle-input" type="range" min="5" max="60" step="1" value="25">
+            <div class="range-ends mono"><span>5°</span><span>60°</span></div>
+          </div>
+          <div class="control">
+            <label class="control-label" for="length-input"><span>Comprimento do fio</span><output class="control-value" id="length-value" for="length-input">1,20 m</output></label>
+            <input id="length-input" type="range" min="0.30" max="2.00" step="0.05" value="1.20">
+            <div class="range-ends mono"><span>0,30 m</span><span>2,00 m</span></div>
+          </div>
+          <div class="control">
+            <label class="control-label" for="mass-input"><span>Massa do corpo</span><output class="control-value" id="mass-value" for="mass-input">0,50 kg</output></label>
+            <input id="mass-input" type="range" min="0.10" max="2.00" step="0.05" value="0.50">
+            <div class="range-ends mono"><span>0,10 kg</span><span>2,00 kg</span></div>
+          </div>
+          <div class="metric-list mono">
+            <div class="metric"><span>Período teórico</span><output id="period-output" class="metric-highlight">2,20 s</output></div>
+            <div class="metric"><span>Gravidade</span><output>9,81 m/s²</output></div>
+            <div class="metric"><span>Tensão instantânea</span><output id="tension-output">4,45 N</output></div>
+          </div>
+          <p class="mass-note">No modelo ideal, a massa altera a tensão no fio, mas não o período de oscilação.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="chart-section" aria-labelledby="chart-title">
+      <div class="chart-copy">
+        <div class="eyebrow mono">Leitura em tempo real</div>
+        <h2 id="chart-title">O movimento, em traço.</h2>
+        <p>O gráfico acompanha o deslocamento angular ao longo do tempo. A linha tracejada indica o equilíbrio.</p>
+        <div class="chart-legend mono"><span class="legend-item"><span class="legend-swatch"></span>Ângulo</span><span class="legend-item"><span class="legend-swatch reference"></span>Equilíbrio</span></div>
+      </div>
+      <div class="chart-wrap"><canvas id="chart-canvas" role="img" aria-label="Gráfico do ângulo do pêndulo ao longo do tempo"></canvas><div class="chart-foot mono"><span id="chart-time-label">t = 0,00 s</span><span>ÂNGULO (°) / TEMPO (s)</span></div></div>
+    </section>
+
+    <section class="data-section section-light" id="dados" aria-labelledby="data-title">
+      <div class="data-top">
+        <div>
+          <div class="section-kicker eyebrow mono">03 / Caderno de dados</div>
+          <h2 id="data-title">Medir para<br>compreender.</h2>
+        </div>
+        <p>As medições completas, as fotografias do aparato e os gráficos finais estão organizados na página do experimento.</p>
+      </div>
+      <div class="table-scroll">
+        <table class="data-table">
+          <thead><tr><th class="mono">Ensaio</th><th class="mono">Comprimento (m)</th><th class="mono">Massa (kg)</th><th class="mono">Ângulo inicial (°)</th><th class="mono">Período medido (s)</th></tr></thead>
+          <tbody><tr class="placeholder-row"><td colspan="5"><a href="experimento.html#dados">Abrir as tabelas completas de medições →</a></td></tr></tbody>
+        </table>
+      </div>
+      <p class="table-footnote mono">5 COMPRIMENTOS · 5 REPETIÇÕES POR CONDIÇÃO</p>
+    </section>
+
+    <section class="results-section" id="resultados" aria-labelledby="results-title">
+      <div class="results-copy">
+        <div class="eyebrow mono">04 / Análise</div>
+        <h2 id="results-title">O que os dados revelam.</h2>
+        <p>Os resultados mostram o aumento do período com o comprimento do fio e permitem estimar g. A página seguinte reúne os gráficos e a análise das variações de massa e amplitude.</p>
+      </div>
+      <div class="results-placeholder" aria-label="Espaço reservado para os gráficos dos resultados experimentais">
+        <div class="placeholder-axes"><span class="placeholder-mark"></span></div>
+        <div class="placeholder-message"><strong class="mono">Resultados do grupo</strong><span>Incluindo as medições, os gráficos originais e as imagens do aparato experimental.</span><a class="report-link mono" href="experimento.html">Explorar os resultados ↗</a></div>
+      </div>
+    </section>
+
+    <section class="closing" aria-labelledby="conclusion-title">
+      <div>
+        <div class="mono">Conclusão · Projeto experimental</div>
+        <h2 id="conclusion-title">Cada oscilação conta uma história.</h2>
+        <p>Os dados de comprimento acompanham a relação prevista para o pêndulo simples. A linearização de T² em função de L levou o grupo a estimar a gravidade local em aproximadamente 9,81 m/s².</p>
+      </div>
+      <div class="thanks">
+        <div class="mono">Agradecimentos</div>
+        <p>A todas as pessoas que contribuíram para a realização deste experimento.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer mono"><span>LABORATÓRIO DE FÍSICA · PÊNDULO SIMPLES</span><a href="#inicio">VOLTAR AO INÍCIO ↑</a></footer>
+</body>
+</html>

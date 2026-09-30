@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10191a">
+  <meta name="description" content="Aparato, medições, gráficos e análise do experimento de pêndulo simples realizado no IFMS Campus Três Lagoas.">
+  <title>Nosso experimento | Pêndulo simples</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="report-page">
+  <header class="site-header">
+    <a class="brand" href="index.html#inicio" aria-label="Laboratório de Física, introdução"><span class="brand-mark">∿</span><span>LABORATÓRIO DE FÍSICA</span></a>
+    <nav class="site-nav" aria-label="Navegação principal">
+      <a href="index.html"><span class="nav-index">01</span>Introdução</a>
+      <a href="#inicio" aria-current="page"><span class="nav-index">02</span>Nosso experimento</a>
+      <a href="#dados"><span class="nav-index">03</span>Medições</a>
+      <a href="#graficos"><span class="nav-index">04</span>Gráficos</a>
+      <a href="#analise"><span class="nav-index">05</span>Análise</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="report-hero" id="inicio" aria-labelledby="report-title">
+      <div class="report-hero-copy">
+        <div class="eyebrow mono">Relatório experimental · 2026</div>
+        <h1 id="report-title">O que medimos.<br><span>O que descobrimos.</span></h1>
+        <p>O período de oscilação de um pêndulo simples e a determinação da aceleração da gravidade.</p>
+        <div class="report-authors">IFMS · Campus Três Lagoas <span>·</span> Curso Técnico Integrado em Informática</div>
+        <div class="author-list">Guilherme Generoso de Camargo · Arthur Giuseppe Dias · Matheus Pereira da Silva · Carlos Eduardo Rodrigues Penhalver</div>
+      </div>
+      <div class="report-hero-stamp mono"><span>LAB</span><strong>01</strong><span>FÍSICA<br>EXPERIMENTAL</span></div>
+      <div class="report-hero-index mono"><span>INFO 2A</span><span>·</span><span>TRÊS LAGOAS — MS</span></div>
+    </section>
+
+    <section class="report-summary" aria-label="Principais resultados">
+      <div class="summary-lead"><span class="mono">EM UMA LINHA</span><p>Quanto maior o fio, maior o período. A inclinação de T² × L fornece uma estimativa experimental de g.</p></div>
+      <div class="summary-stat"><span class="mono">GRAVIDADE ESTIMADA</span><strong>9,81 <small>m/s²</small></strong><span>obtida pela linearização</span></div>
+      <div class="summary-stat"><span class="mono">SÉRIE DE COMPRIMENTO</span><strong>0,20—1,00 <small>m</small></strong><span>cinco comprimentos</span></div>
+      <div class="summary-stat"><span class="mono">CRONOMETRAGEM</span><strong>10 <small>ciclos</small></strong><span>cinco repetições por condição</span></div>
+    </section>
+
+    <section class="apparatus-section" id="aparato" aria-labelledby="apparatus-title">
+      <div class="report-section-heading">
+        <div><div class="eyebrow mono">01 / Montagem</div><h2 id="apparatus-title">A bancada<br>e o pêndulo.</h2></div>
+        <p>Uma massa de prova presa por barbante a um suporte fixo. O comprimento foi medido até o centro da massa e o ângulo inicial controlado com um transferidor.</p>
+      </div>
+      <div class="apparatus-grid">
+        <figure class="apparatus-figure apparatus-diagram">
+          <img src="assets/experiment/apparatus-diagram.png" alt="Diagrama do aparato: ventosa, transferidor, barbante, disco de ferro e régua para medir o comprimento do pêndulo" loading="lazy">
+          <figcaption><span class="mono">FIGURA 01</span> Esquema ilustrativo do aparato experimental.</figcaption>
+        </figure>
+        <figure class="apparatus-figure apparatus-photo">
+          <img src="assets/experiment/apparatus-photo.png" alt="Fotografia do pêndulo montado no laboratório, suspenso diante de uma lousa" loading="lazy">
+          <figcaption><span class="mono">FIGURA 02</span> Montagem realizada pelo grupo no laboratório de física.</figcaption>
+        </figure>
+      </div>
+      <div class="method-strip">
+        <div><span class="mono">MATERIAIS</span><p>Anilhas de ferro, barbante, ventosa, haste metálica, régua e transferidor.</p></div>
+        <div><span class="mono">PROCEDIMENTO</span><p>Soltar a massa sem impulso e medir o tempo de dez oscilações completas.</p></div>
+        <div><span class="mono">REPETIÇÕES</span><p>Cinco tomadas de tempo para cada condição experimental.</p></div>
+      </div>
+    </section>
+
+    <section class="report-data section-light" id="dados" aria-labelledby="data-title">
+      <div class="report-section-heading">
+        <div><div class="section-kicker eyebrow mono">02 / Caderno de dados</div><h2 id="data-title">As medições,<br>sem atalhos.</h2></div>
+        <p>Tempos registrados para dez oscilações e períodos calculados dividindo a média por dez. Os valores abaixo reproduzem as tabelas do relatório.</p>
+      </div>
+      <div class="dataset-heading"><span class="dataset-number mono">A</span><div><h3>Variação do comprimento</h3><p>Massa indicada de 60 g · ângulo inicial de 5° · cinco medidas de tempo por comprimento.</p></div></div>
+      <div class="table-scroll report-table-scroll">
+        <table class="data-table report-table">
+          <thead><tr><th class="mono">L (m)</th><th class="mono">tA (s)</th><th class="mono">tB (s)</th><th class="mono">tC (s)</th><th class="mono">tD (s)</th><th class="mono">tE (s)</th><th class="mono">Média t₁₀ (s)</th><th class="mono">Δt (s)</th><th class="mono">T (s)</th><th class="mono">T² (s²)</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">0,20</th><td>8,82</td><td>9,12</td><td>8,88</td><td>9,05</td><td>8,95</td><td>8,96</td><td>0,150</td><td>0,896</td><td>0,804</td></tr>
+            <tr><th scope="row">0,40</th><td>12,52</td><td>12,85</td><td>12,60</td><td>12,78</td><td>12,69</td><td>12,68</td><td>0,165</td><td>1,269</td><td>1,610</td></tr>
+            <tr><th scope="row">0,60</th><td>15,35</td><td>15,72</td><td>15,48</td><td>15,65</td><td>15,52</td><td>15,53</td><td>0,185</td><td>1,554</td><td>2,416</td></tr>
+            <tr><th scope="row">0,80</th><td>17,75</td><td>18,12</td><td>17,85</td><td>18,06</td><td>17,92</td><td>17,94</td><td>0,185</td><td>1,794</td><td>3,219</td></tr>
+            <tr><th scope="row">1,00</th><td>19,85</td><td>20,25</td><td>19,98</td><td>20,18</td><td>20,04</td><td>20,06</td><td>0,200</td><td>2,006</td><td>4,024</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-footnote mono">Δt = (t máximo − t mínimo) / 2 · T = média de t₁₀ / 10</p>
+
+      <div class="dataset-heading dataset-heading-spaced"><span class="dataset-number mono">B</span><div><h3>Variação da massa</h3><p>Comprimento indicado de 1,00 m · ângulo inicial de 10°.</p></div></div>
+      <div class="table-scroll report-table-scroll">
+        <table class="data-table report-table">
+          <thead><tr><th class="mono">Massa</th><th class="mono">tA (s)</th><th class="mono">tB (s)</th><th class="mono">tC (s)</th><th class="mono">tD (s)</th><th class="mono">tE (s)</th><th class="mono">T informado (s)</th><th class="mono">ΔT (s)</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">80 g</th><td>19,36</td><td>19,32</td><td>19,33</td><td>19,31</td><td>19,30</td><td>1,932</td><td>± 0,003</td></tr>
+            <tr><th scope="row">100 g</th><td>19,42</td><td>19,47</td><td>19,52</td><td>19,56</td><td>19,46</td><td>1,949</td><td>± 0,007</td></tr>
+            <tr><th scope="row">120 g</th><td>19,56</td><td>19,59</td><td>19,60</td><td>19,60</td><td>19,58</td><td>1,960</td><td>± 0,005</td></tr>
+            <tr><th scope="row">140 g</th><td>19,66</td><td>19,70</td><td>19,69</td><td>19,72</td><td>19,72</td><td>1,969</td><td>± 0,003</td></tr>
+            <tr><th scope="row">160 g</th><td>19,75</td><td>19,65</td><td>19,74</td><td>19,79</td><td>19,69</td><td>1,972</td><td>± 0,007</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="dataset-heading dataset-heading-spaced"><span class="dataset-number mono">C</span><div><h3>Variação do ângulo inicial</h3><p>Comprimento indicado de 1,00 m · massa indicada de 60 g.</p></div></div>
+      <div class="table-scroll report-table-scroll">
+        <table class="data-table report-table">
+          <thead><tr><th class="mono">Ângulo</th><th class="mono">θ (rad)</th><th class="mono">tA (s)</th><th class="mono">tB (s)</th><th class="mono">tC (s)</th><th class="mono">tD (s)</th><th class="mono">tE (s)</th><th class="mono">T (s)</th><th class="mono">T/T₀ exp.</th><th class="mono">T/T₀ teórica</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">10°</th><td>0,175</td><td>19,23</td><td>19,36</td><td>19,30</td><td>19,20</td><td>19,33</td><td>1,928</td><td>1,002</td><td>1,0019</td></tr>
+            <tr><th scope="row">20°</th><td>0,349</td><td>19,62</td><td>19,70</td><td>19,74</td><td>19,74</td><td>19,71</td><td>1,971</td><td>1,024</td><td>1,0076</td></tr>
+            <tr><th scope="row">30°</th><td>0,524</td><td>19,94</td><td>20,00</td><td>20,12</td><td>20,60</td><td>20,12</td><td>2,016</td><td>1,047</td><td>1,0172</td></tr>
+            <tr><th scope="row">40°</th><td>0,698</td><td>20,28</td><td>20,50</td><td>20,20</td><td>20,30</td><td>20,29</td><td>2,031</td><td>1,055</td><td>1,0305</td></tr>
+            <tr><th scope="row">50°</th><td>0,873</td><td>21,10</td><td>20,69</td><td>20,74</td><td>20,67</td><td>20,70</td><td>2,078</td><td>1,080</td><td>1,0476</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-footnote mono">A tabela original apresenta T/T₀ e a correção teórica 1 + θ₀²/16.</p>
+    </section>
+
+    <section class="report-graphs" id="graficos" aria-labelledby="graphs-title">
+      <div class="report-section-heading">
+        <div><div class="eyebrow mono">03 / Leitura visual</div><h2 id="graphs-title">Três relações.<br>Uma história.</h2></div>
+        <p>Gráficos reproduzidos das páginas de análise do relatório original. Cada um destaca uma variável diferente do movimento.</p>
+      </div>
+      <div class="graph-grid">
+        <figure class="graph-figure graph-wide">
+          <div class="graph-image"><img src="assets/experiment/chart-period-length.jpeg" alt="Gráfico do período T em função do comprimento L, mostrando uma curva crescente" loading="lazy"></div>
+          <figcaption><span class="mono">GRÁFICO 01 · T × L</span><strong>O período cresce com o comprimento.</strong><span>O aumento tem comportamento não linear, compatível com T proporcional à raiz quadrada de L.</span></figcaption>
+        </figure>
+        <figure class="graph-figure">
+          <div class="graph-image"><img src="assets/experiment/chart-period-squared.jpeg" alt="Gráfico linear de T ao quadrado por comprimento, com ajuste y = 4,0266x - 0,0003" loading="lazy"></div>
+          <figcaption><span class="mono">GRÁFICO 02 · T² × L</span><strong>A linearização estima g.</strong><span>Inclinação informada: 4,0266 s²/m · R² informado: 1,0000 · g estimado: 9,81 m/s².</span></figcaption>
+        </figure>
+        <figure class="graph-figure">
+          <div class="graph-image"><img src="assets/experiment/chart-amplitude.jpeg" alt="Gráfico da razão entre período e período de referência em função do ângulo inicial, com tendência crescente" loading="lazy"></div>
+          <figcaption><span class="mono">GRÁFICO 03 · T/T₀ × θ₀</span><strong>Ângulos maiores alongam o período.</strong><span>O valor experimental chega a 1,080 em 50°, acima da correção teórica de primeira ordem indicada na tabela.</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="report-analysis" id="analise" aria-labelledby="analysis-title">
+      <div class="report-section-heading">
+        <div><div class="eyebrow mono">04 / Discussão</div><h2 id="analysis-title">O que os dados<br>nos dizem.</h2></div>
+        <p>A interpretação combina o modelo de pequenas oscilações com as tendências medidas pelo grupo, sem perder de vista as limitações do procedimento.</p>
+      </div>
+      <div class="finding-list">
+        <article class="finding"><span class="finding-index mono">01</span><div><h3>Comprimento e período</h3><p>Na série de 0,20 m a 1,00 m, o período informado aumenta de 0,896 s para 2,006 s. A relação T² × L é aproximadamente linear, como prevê T² = (4π²/g)L.</p></div><strong class="finding-value">T ∝ √L</strong></article>
+        <article class="finding"><span class="finding-index mono">02</span><div><h3>Estimativa da gravidade</h3><p>O ajuste do gráfico fornece inclinação 4,0266 s²/m. Usando g = 4π² / inclinação, o relatório apresenta g ≈ 9,81 m/s², próximo ao valor esperado na superfície terrestre.</p></div><strong class="finding-value">g ≈ 9,81 m/s²</strong></article>
+        <article class="finding"><span class="finding-index mono">03</span><div><h3>Massa e isocronismo</h3><p>Os períodos listados para 80 g a 160 g ficam entre 1,932 s e 1,972 s. A série sugere variação pequena, mas deve ser interpretada junto às incertezas e à inconsistência apontada abaixo.</p></div><strong class="finding-value">80—160 g</strong></article>
+        <article class="finding"><span class="finding-index mono">04</span><div><h3>Amplitude e limite do MHS</h3><p>O período cresce de 1,928 s em 10° para 2,078 s em 50°. Isso mostra o desvio do modelo de pequenos ângulos quando a amplitude aumenta; o grupo limitou a coleta a 50° após problemas de colisão a 60°.</p></div><strong class="finding-value">+7,8%*</strong></article>
+      </div>
+      <p class="finding-footnote">*Variação calculada com os períodos tabulados para 10° e 50°: (2,078 / 1,928 − 1) × 100.</p>
+      <aside class="data-note"><span class="mono">NOTA DE CONFERÊNCIA</span><p>O relatório contém divergências entre tabelas e discussão: a análise da massa cita 50 g e 160 g e períodos próximos de 2,006 s, enquanto a tabela registra 80 g a 160 g e períodos de 1,932 s a 1,972 s. Também há condições de massa/amplitude diferentes na legenda do gráfico de comprimento e na Tabela 1. Por isso, esta página mantém os valores de cada tabela identificados e não os mistura.</p></aside>
+    </section>
+
+    <section class="report-conclusion" aria-labelledby="report-conclusion-title">
+      <div class="eyebrow mono">Síntese do experimento</div>
+      <h2 id="report-conclusion-title">Medir o movimento tornou a gravidade visível.</h2>
+      <p>A experiência confirmou a tendência prevista entre comprimento e período, produziu uma estimativa de gravidade próxima de 9,81 m/s² e mostrou que amplitudes maiores afastam o pêndulo do regime harmônico simples ideal.</p>
+      <a class="return-link mono" href="index.html">← Voltar à introdução</a>
+    </section>
+  </main>
+
+  <footer class="site-footer mono"><span>IFMS · CAMPUS TRÊS LAGOAS · PÊNDULO SIMPLES</span><a href="#inicio">VOLTAR AO TOPO ↑</a></footer>
+</body>
+</html>
