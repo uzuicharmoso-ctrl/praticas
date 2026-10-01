@@ -61,7 +61,7 @@
         const x = (index * 83 + 17) % width;
         const y = (index * 47 + 9) % height;
         const pulse = .22 + .2 * (1 + Math.sin(performance.now() / 1200 + index)) / 2;
-        context.fillStyle = `rgba(221, 232, 212, ${pulse})`;
+        context.fillStyle = `rgba(206, 232, 255, ${pulse})`;
         context.beginPath();
         context.arc(x, y, index % 7 === 0 ? 1.25 : .7, 0, Math.PI * 2);
         context.fill();
@@ -70,22 +70,22 @@
 
     context.save();
     context.setLineDash([3, 7]);
-    context.strokeStyle = hero ? 'rgba(199, 239, 105, .19)' : 'rgba(199, 239, 105, .22)';
+    context.strokeStyle = hero ? 'rgba(73, 188, 255, .19)' : 'rgba(73, 188, 255, .22)';
     context.lineWidth = 1;
     context.beginPath();
     context.arc(originX, originY, armLength, Math.PI / 2 - Math.min(.8, Math.abs(theta) + .18), Math.PI / 2 + Math.min(.8, Math.abs(theta) + .18));
     context.stroke();
     context.setLineDash([]);
-    context.strokeStyle = hero ? 'rgba(199, 239, 105, .25)' : 'rgba(199, 239, 105, .3)';
+    context.strokeStyle = hero ? 'rgba(73, 188, 255, .25)' : 'rgba(73, 188, 255, .3)';
     context.beginPath();
     context.moveTo(originX, originY);
     context.lineTo(originX, originY + armLength * 1.07);
     context.stroke();
     context.restore();
 
-    context.fillStyle = '#d9e1d2';
+    context.fillStyle = '#dcecff';
     context.fillRect(originX - 28, originY - 8, 56, 5);
-    context.fillStyle = '#7f8c7d';
+    context.fillStyle = '#71849b';
     context.beginPath();
     context.arc(originX, originY, 4, 0, Math.PI * 2);
     context.fill();
@@ -97,16 +97,16 @@
     context.stroke();
 
     const glow = context.createRadialGradient(bobX, bobY, 1, bobX, bobY, bobRadius * 2.9);
-    glow.addColorStop(0, 'rgba(199, 239, 105, .26)');
-    glow.addColorStop(1, 'rgba(199, 239, 105, 0)');
+    glow.addColorStop(0, 'rgba(73, 188, 255, .26)');
+    glow.addColorStop(1, 'rgba(73, 188, 255, 0)');
     context.fillStyle = glow;
     context.beginPath();
     context.arc(bobX, bobY, bobRadius * 2.9, 0, Math.PI * 2);
     context.fill();
     const metal = context.createLinearGradient(bobX - bobRadius, bobY - bobRadius, bobX + bobRadius, bobY + bobRadius);
-    metal.addColorStop(0, '#edfaa9');
-    metal.addColorStop(.45, '#c7ef69');
-    metal.addColorStop(1, '#83a844');
+    metal.addColorStop(0, '#d5f1ff');
+    metal.addColorStop(.45, '#49bcff');
+    metal.addColorStop(1, '#287bb4');
     context.fillStyle = metal;
     context.beginPath();
     context.arc(bobX, bobY, bobRadius, 0, Math.PI * 2);
@@ -123,7 +123,7 @@
       context.fillStyle = '#9da99b';
       context.font = '11px "DM Mono", monospace';
       context.fillText(`${format(length, 2)} m`, originX + 12, originY + armLength * .48);
-      context.fillStyle = '#c7ef69';
+      context.fillStyle = '#49bcff';
       context.fillText(`T ${format(tension, 2)} N`, labelX, labelY);
       context.strokeStyle = 'rgba(239, 128, 90, .7)';
       context.lineWidth = 1;
@@ -244,7 +244,7 @@
         const first = visibleHistory[0];
         context.lineTo(left + Math.min(1, first.time / maxTime) * plotWidth + 2, top + plotHeight * (.5 - first.angle / (maxAngle * 2)));
       }
-      context.strokeStyle = '#c7ef69';
+      context.strokeStyle = '#49bcff';
       context.lineWidth = 2;
       context.lineJoin = 'round';
       context.stroke();

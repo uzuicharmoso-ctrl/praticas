@@ -3,13 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#10191a">
+  <meta name="theme-color" content="#080d16">
   <meta name="description" content="Aparato, medições, gráficos e análise do experimento de pêndulo simples realizado no IFMS Campus Três Lagoas.">
   <title>Nosso experimento | Pêndulo simples</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="motion.js" defer></script>
 </head>
 <body class="report-page">
   <header class="site-header">
@@ -30,7 +31,7 @@
         <h1 id="report-title">O que medimos.<br><span>O que descobrimos.</span></h1>
         <p>O período de oscilação de um pêndulo simples e a determinação da aceleração da gravidade.</p>
         <div class="report-authors">IFMS · Campus Três Lagoas <span>·</span> Curso Técnico Integrado em Informática</div>
-        <div class="author-list">Guilherme Generoso de Camargo · Arthur Giuseppe Dias · Matheus Pereira da Silva · Carlos Eduardo Rodrigues Penhalver</div>
+        <div class="author-list"><span>Guilherme Generoso de Camargo</span><span>Arthur Giuseppe Dias</span><span>Matheus Pereira da Silva</span><span>Carlos Eduardo Rodrigues Penhalver</span></div>
       </div>
       <div class="report-hero-stamp mono"><span>LAB</span><strong>01</strong><span>FÍSICA<br>EXPERIMENTAL</span></div>
       <div class="report-hero-index mono"><span>INFO 2A</span><span>·</span><span>TRÊS LAGOAS — MS</span></div>
@@ -70,49 +71,71 @@
         <div><div class="section-kicker eyebrow mono">02 / Caderno de dados</div><h2 id="data-title">As medições,<br>sem atalhos.</h2></div>
         <p>Tempos registrados para dez oscilações e períodos calculados dividindo a média por dez. Os valores abaixo reproduzem as tabelas do relatório.</p>
       </div>
-      <div class="dataset-heading"><span class="dataset-number mono">A</span><div><h3>Variação do comprimento</h3><p>Massa indicada de 60 g · ângulo inicial de 5° · cinco medidas de tempo por comprimento.</p></div></div>
+      <div class="dataset-heading"><span class="dataset-number mono">A</span><div><h3>Variação do comprimento</h3><p>Massa de 60 g · amplitude inicial de 5° · cinco medidas do tempo de dez oscilações.</p></div></div>
       <div class="table-scroll report-table-scroll">
         <table class="data-table report-table">
-          <thead><tr><th class="mono">L (m)</th><th class="mono">tA (s)</th><th class="mono">tB (s)</th><th class="mono">tC (s)</th><th class="mono">tD (s)</th><th class="mono">tE (s)</th><th class="mono">Média t₁₀ (s)</th><th class="mono">Δt (s)</th><th class="mono">T (s)</th><th class="mono">T² (s²)</th></tr></thead>
+          <thead><tr><th class="mono">d (m)</th><th class="mono">tA (s)</th><th class="mono">tB (s)</th><th class="mono">tC (s)</th><th class="mono">tD (s)</th><th class="mono">tE (s)</th><th class="mono">t médio (s)</th><th class="mono">Δt = ½ · (t<sub>máx</sub> − t<sub>mín</sub>)</th><th class="mono">Período T = t<sub>10,médio</sub> / 10 (s)</th><th class="mono">Média (t²) (s²)</th></tr></thead>
           <tbody>
-            <tr><th scope="row">0,20</th><td>8,82</td><td>9,12</td><td>8,88</td><td>9,05</td><td>8,95</td><td>8,96</td><td>0,150</td><td>0,896</td><td>0,804</td></tr>
-            <tr><th scope="row">0,40</th><td>12,52</td><td>12,85</td><td>12,60</td><td>12,78</td><td>12,69</td><td>12,68</td><td>0,165</td><td>1,269</td><td>1,610</td></tr>
-            <tr><th scope="row">0,60</th><td>15,35</td><td>15,72</td><td>15,48</td><td>15,65</td><td>15,52</td><td>15,53</td><td>0,185</td><td>1,554</td><td>2,416</td></tr>
-            <tr><th scope="row">0,80</th><td>17,75</td><td>18,12</td><td>17,85</td><td>18,06</td><td>17,92</td><td>17,94</td><td>0,185</td><td>1,794</td><td>3,219</td></tr>
-            <tr><th scope="row">1,00</th><td>19,85</td><td>20,25</td><td>19,98</td><td>20,18</td><td>20,04</td><td>20,06</td><td>0,200</td><td>2,006</td><td>4,024</td></tr>
+            <tr><th scope="row">L₀ = 0,00 m</th><td>0,000</td><td>0,000</td><td>0,000</td><td>0,000</td><td>0,000</td><td>0,000</td><td>0,000</td><td>0,000</td><td>0,000</td></tr>
+            <tr><th scope="row">L₁ = 0,20 m</th><td>8,82</td><td>9,12</td><td>8,88</td><td>9,05</td><td>8,95</td><td>8,96</td><td>0,150</td><td>0,896</td><td>0,804</td></tr>
+            <tr><th scope="row">L₂ = 0,40 m</th><td>12,52</td><td>12,85</td><td>12,60</td><td>12,78</td><td>12,69</td><td>12,68</td><td>0,165</td><td>1,269</td><td>1,610</td></tr>
+            <tr><th scope="row">L₃ = 0,60 m</th><td>15,35</td><td>15,72</td><td>15,48</td><td>15,65</td><td>15,52</td><td>15,53</td><td>0,185</td><td>1,554</td><td>2,416</td></tr>
+            <tr><th scope="row">L₄ = 0,80 m</th><td>17,75</td><td>18,12</td><td>17,85</td><td>18,06</td><td>17,92</td><td>17,94</td><td>0,185</td><td>1,794</td><td>3,219</td></tr>
+            <tr><th scope="row">L₅ = 1,00 m</th><td>19,85</td><td>20,25</td><td>19,98</td><td>20,18</td><td>20,04</td><td>20,06</td><td>0,200</td><td>2,006</td><td>4,024</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="table-footnote mono">Δt = (t máximo − t mínimo) / 2 · T = média de t₁₀ / 10</p>
+      <dl class="table-legend" aria-label="Legenda da tabela de comprimento">
+        <div><dt class="mono">tA–tE</dt><dd>Tempo de cada uma das 10 oscilações.</dd></div>
+        <div><dt class="mono">t médio</dt><dd>(tA + tB + tC + tD + tE) / 5.</dd></div>
+        <div><dt class="mono">Δt</dt><dd>(t máximo − t mínimo) / 2.</dd></div>
+        <div><dt class="mono">T</dt><dd>Período: t médio / 10.</dd></div>
+      </dl>
 
       <div class="dataset-heading dataset-heading-spaced"><span class="dataset-number mono">B</span><div><h3>Variação da massa</h3><p>Comprimento indicado de 1,00 m · ângulo inicial de 10°.</p></div></div>
       <div class="table-scroll report-table-scroll">
         <table class="data-table report-table">
-          <thead><tr><th class="mono">Massa</th><th class="mono">tA (s)</th><th class="mono">tB (s)</th><th class="mono">tC (s)</th><th class="mono">tD (s)</th><th class="mono">tE (s)</th><th class="mono">T informado (s)</th><th class="mono">ΔT (s)</th></tr></thead>
+          <thead><tr><th class="mono">Massa m (g)</th><th class="mono">tA (s)</th><th class="mono">tB (s)</th><th class="mono">tC (s)</th><th class="mono">tD (s)</th><th class="mono">tE (s)</th><th class="mono">t médio (s)</th><th class="mono">Δt = ½ · (t<sub>máx</sub> − t<sub>mín</sub>)</th><th class="mono">Período T = t<sub>10,médio</sub> / 10 (s)</th><th class="mono">Incerteza ΔT = Δt / 10 (s)</th></tr></thead>
           <tbody>
-            <tr><th scope="row">80 g</th><td>19,36</td><td>19,32</td><td>19,33</td><td>19,31</td><td>19,30</td><td>1,932</td><td>± 0,003</td></tr>
-            <tr><th scope="row">100 g</th><td>19,42</td><td>19,47</td><td>19,52</td><td>19,56</td><td>19,46</td><td>1,949</td><td>± 0,007</td></tr>
-            <tr><th scope="row">120 g</th><td>19,56</td><td>19,59</td><td>19,60</td><td>19,60</td><td>19,58</td><td>1,960</td><td>± 0,005</td></tr>
-            <tr><th scope="row">140 g</th><td>19,66</td><td>19,70</td><td>19,69</td><td>19,72</td><td>19,72</td><td>1,969</td><td>± 0,003</td></tr>
-            <tr><th scope="row">160 g</th><td>19,75</td><td>19,65</td><td>19,74</td><td>19,79</td><td>19,69</td><td>1,972</td><td>± 0,007</td></tr>
+            <tr><th scope="row">m = 80 g</th><td>19,36</td><td>19,32</td><td>19,33</td><td>19,31</td><td>19,30</td><td>1,932</td><td>0,030</td><td>1,932</td><td>± 0,003</td></tr>
+            <tr><th scope="row">m = 100 g</th><td>19,42</td><td>19,47</td><td>19,52</td><td>19,56</td><td>19,46</td><td>1,949</td><td>0,070</td><td>1,949</td><td>± 0,007</td></tr>
+            <tr><th scope="row">m = 120 g</th><td>19,56</td><td>19,59</td><td>19,60</td><td>19,60</td><td>19,58</td><td>1,960</td><td>0,045</td><td>1,960</td><td>± 0,005</td></tr>
+            <tr><th scope="row">m = 140 g</th><td>19,66</td><td>19,70</td><td>19,69</td><td>19,72</td><td>19,72</td><td>1,969</td><td>0,030</td><td>1,969</td><td>± 0,003</td></tr>
+            <tr><th scope="row">m = 160 g</th><td>19,75</td><td>19,65</td><td>19,74</td><td>19,79</td><td>19,69</td><td>1,972</td><td>0,070</td><td>1,972</td><td>± 0,007</td></tr>
           </tbody>
         </table>
       </div>
 
+      <dl class="table-legend" aria-label="Legenda da tabela de massa">
+        <div><dt class="mono">tA–tE</dt><dd>Tempo de cada uma das 10 oscilações.</dd></div>
+        <div><dt class="mono">t̄₁₀</dt><dd>(tA + tB + tC + tD + tE) / 5.</dd></div>
+        <div><dt class="mono">T</dt><dd>Período: t̄₁₀ / 10.</dd></div>
+        <div><dt class="mono">Δt</dt><dd>(t máximo − t mínimo) / 2.</dd></div>
+        <div><dt class="mono">ΔT</dt><dd>Incerteza do período: Δt / 10.</dd></div>
+      </dl>
+
       <div class="dataset-heading dataset-heading-spaced"><span class="dataset-number mono">C</span><div><h3>Variação do ângulo inicial</h3><p>Comprimento indicado de 1,00 m · massa indicada de 60 g.</p></div></div>
       <div class="table-scroll report-table-scroll">
         <table class="data-table report-table">
-          <thead><tr><th class="mono">Ângulo</th><th class="mono">θ (rad)</th><th class="mono">tA (s)</th><th class="mono">tB (s)</th><th class="mono">tC (s)</th><th class="mono">tD (s)</th><th class="mono">tE (s)</th><th class="mono">T (s)</th><th class="mono">T/T₀ exp.</th><th class="mono">T/T₀ teórica</th></tr></thead>
+          <thead><tr><th class="mono">Amplitude C (°)</th><th class="mono">Ângulo θ (rad)</th><th class="mono">tA (s)</th><th class="mono">tB (s)</th><th class="mono">tC (s)</th><th class="mono">tD (s)</th><th class="mono">tE (s)</th><th class="mono">t médio (s)</th><th class="mono">Δt = ½ · (t<sub>máx</sub> − t<sub>mín</sub>)</th><th class="mono">Período T (θ₀) (s)</th><th class="mono">Razão experimental T(θ₀) / T inicial</th><th class="mono">Razão teórica 1 + θ₀² / 16</th></tr></thead>
           <tbody>
-            <tr><th scope="row">10°</th><td>0,175</td><td>19,23</td><td>19,36</td><td>19,30</td><td>19,20</td><td>19,33</td><td>1,928</td><td>1,002</td><td>1,0019</td></tr>
-            <tr><th scope="row">20°</th><td>0,349</td><td>19,62</td><td>19,70</td><td>19,74</td><td>19,74</td><td>19,71</td><td>1,971</td><td>1,024</td><td>1,0076</td></tr>
-            <tr><th scope="row">30°</th><td>0,524</td><td>19,94</td><td>20,00</td><td>20,12</td><td>20,60</td><td>20,12</td><td>2,016</td><td>1,047</td><td>1,0172</td></tr>
-            <tr><th scope="row">40°</th><td>0,698</td><td>20,28</td><td>20,50</td><td>20,20</td><td>20,30</td><td>20,29</td><td>2,031</td><td>1,055</td><td>1,0305</td></tr>
-            <tr><th scope="row">50°</th><td>0,873</td><td>21,10</td><td>20,69</td><td>20,74</td><td>20,67</td><td>20,70</td><td>2,078</td><td>1,080</td><td>1,0476</td></tr>
+            <tr><th scope="row">θ₂ = 10°</th><td>0,175</td><td>19,23</td><td>19,36</td><td>19,30</td><td>19,20</td><td>19,33</td><td>19,284</td><td>0,080</td><td>1,928</td><td>1,002</td><td>1,0019</td></tr>
+            <tr><th scope="row">θ₃ = 20°</th><td>0,349</td><td>19,62</td><td>19,70</td><td>19,74</td><td>19,74</td><td>19,71</td><td>19,710</td><td>0,065</td><td>1,971</td><td>1,024</td><td>1,0076</td></tr>
+            <tr><th scope="row">θ₄ = 30°</th><td>0,524</td><td>19,94</td><td>20,00</td><td>20,12</td><td>20,60</td><td>20,12</td><td>20,156</td><td>0,330</td><td>2,016</td><td>1,047</td><td>1,0172</td></tr>
+            <tr><th scope="row">θ₅ = 40°</th><td>0,698</td><td>20,28</td><td>20,50</td><td>20,20</td><td>20,30</td><td>20,29</td><td>20,314</td><td>0,150</td><td>2,031</td><td>1,055</td><td>1,0305</td></tr>
+            <tr><th scope="row">θ₆ = 50°</th><td>0,873</td><td>21,10</td><td>20,69</td><td>20,74</td><td>20,67</td><td>20,70</td><td>20,780</td><td>0,215</td><td>2,078</td><td>1,080</td><td>1,0476</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="table-footnote mono">A tabela original apresenta T/T₀ e a correção teórica 1 + θ₀²/16.</p>
+      <dl class="table-legend" aria-label="Legenda da tabela de ângulo">
+        <div><dt class="mono">tA–tE</dt><dd>Tempo de cada uma das 10 oscilações.</dd></div>
+        <div><dt class="mono">t̄₁₀</dt><dd>Média: (tA + tB + tC + tD + tE) / 5.</dd></div>
+        <div><dt class="mono">T</dt><dd>Período: t̄₁₀ / 10.</dd></div>
+        <div><dt class="mono">Δt</dt><dd>(t máximo − t mínimo) / 2.</dd></div>
+        <div><dt class="mono">ΔT</dt><dd>Incerteza do período: Δt / 10.</dd></div>
+        <div><dt class="mono">T₀</dt><dd>Período para θ₀ = 0.</dd></div>
+        <div><dt class="mono">Correção teórica</dt><dd>T/T₀ ≈ 1 + θ₀²/16, com θ₀ em radianos.</dd></div>
+      </dl>
     </section>
 
     <section class="report-graphs" id="graficos" aria-labelledby="graphs-title">
@@ -123,15 +146,15 @@
       <div class="graph-grid">
         <figure class="graph-figure graph-wide">
           <div class="graph-image"><img src="assets/experiment/chart-period-length.jpeg" alt="Gráfico do período T em função do comprimento L, mostrando uma curva crescente" loading="lazy"></div>
-          <figcaption><span class="mono">GRÁFICO 01 · T × L</span><strong>O período cresce com o comprimento.</strong><span>O aumento tem comportamento não linear, compatível com T proporcional à raiz quadrada de L.</span></figcaption>
+          <figcaption><span class="mono">GRÁFICO 01 · T × L</span><strong>O período cresce com o comprimento.</strong><span>Modelo: T = 2π√(L/g). O aumento não linear é compatível com T proporcional à raiz quadrada de L.</span></figcaption>
         </figure>
         <figure class="graph-figure">
           <div class="graph-image"><img src="assets/experiment/chart-period-squared.jpeg" alt="Gráfico linear de T ao quadrado por comprimento, com ajuste y = 4,0266x - 0,0003" loading="lazy"></div>
-          <figcaption><span class="mono">GRÁFICO 02 · T² × L</span><strong>A linearização estima g.</strong><span>Inclinação informada: 4,0266 s²/m · R² informado: 1,0000 · g estimado: 9,81 m/s².</span></figcaption>
+          <figcaption><span class="mono">GRÁFICO 02 · T² × L</span><strong>A linearização estima g.</strong><span>Modelo: T² = (4π²/g)L · g = 4π²/a, em que a é a inclinação. Inclinação informada: 4,0266 s²/m · R² informado: 1,0000 · g estimado: 9,81 m/s².</span></figcaption>
         </figure>
         <figure class="graph-figure">
           <div class="graph-image"><img src="assets/experiment/chart-amplitude.jpeg" alt="Gráfico da razão entre período e período de referência em função do ângulo inicial, com tendência crescente" loading="lazy"></div>
-          <figcaption><span class="mono">GRÁFICO 03 · T/T₀ × θ₀</span><strong>Ângulos maiores alongam o período.</strong><span>O valor experimental chega a 1,080 em 50°, acima da correção teórica de primeira ordem indicada na tabela.</span></figcaption>
+          <figcaption><span class="mono">GRÁFICO 03 · T/T₀ × θ₀</span><strong>Ângulos maiores alongam o período.</strong><span>Correção para pequenas amplitudes: T/T₀ ≈ 1 + θ₀²/16, com θ₀ em radianos. O valor experimental chega a 1,080 em 50°, acima da previsão de primeira ordem.</span></figcaption>
         </figure>
       </div>
     </section>
@@ -148,7 +171,7 @@
         <article class="finding"><span class="finding-index mono">04</span><div><h3>Amplitude e limite do MHS</h3><p>O período cresce de 1,928 s em 10° para 2,078 s em 50°. Isso mostra o desvio do modelo de pequenos ângulos quando a amplitude aumenta; o grupo limitou a coleta a 50° após problemas de colisão a 60°.</p></div><strong class="finding-value">+7,8%*</strong></article>
       </div>
       <p class="finding-footnote">*Variação calculada com os períodos tabulados para 10° e 50°: (2,078 / 1,928 − 1) × 100.</p>
-      <aside class="data-note"><span class="mono">NOTA DE CONFERÊNCIA</span><p>O relatório contém divergências entre tabelas e discussão: a análise da massa cita 50 g e 160 g e períodos próximos de 2,006 s, enquanto a tabela registra 80 g a 160 g e períodos de 1,932 s a 1,972 s. Também há condições de massa/amplitude diferentes na legenda do gráfico de comprimento e na Tabela 1. Por isso, esta página mantém os valores de cada tabela identificados e não os mistura.</p></aside>
+      <aside class="data-note"><span class="mono">PROBLEMAS ENCONTRADOS</span><p>A massa colidiu com o suporte ao ser solta a 60°, então a coleta de amplitude foi limitada a 50°. Também há divergências entre tabelas e discussão: a análise da massa cita 50 g e 160 g e períodos próximos de 2,006 s, enquanto a tabela registra 80 g a 160 g e períodos de 1,932 s a 1,972 s. Na linha de 120 g, os tempos publicados dão ΔT = 0,002 s pela fórmula da legenda, mas a tabela original informa 0,005 s. A legenda do gráfico de comprimento também indica condições de massa/amplitude diferentes da Tabela 1. Os valores originais são mantidos identificados, sem combinar registros incompatíveis.</p></aside>
     </section>
 
     <section class="report-conclusion" aria-labelledby="report-conclusion-title">
